@@ -2,71 +2,83 @@
 
 using namespace std;
 
-//일단 내림차순
+//일단 오름차순
+//크게 두 역할로 나눌꺼임.
+//배열을 재귀로 통해 쪼개는 부분
+//나눈 부분을 비교하여 정렬기준대로 정렬한 뒤 삽입 할 부분?
 
 void MergeSort(int _iArr[], int _iSize)
 {
-	int iHalfSize1 = _iSize / 2;
-	int iHalfSize2 = _iSize - (iHalfSize1);
+
+#pragma region MySolution-Wrong
+	//int iHalfSize1 = _iSize / 2;
+	//int iHalfSize2 = _iSize - (iHalfSize1);
 
 
-	int* iResultArr = new int[_iSize];
-	int* iArr1 = new int[iHalfSize1];
-	int* iArr2 = new int[iHalfSize2];
+	//int* iResultArr = new int[_iSize];
+	//int* iArr1 = new int[iHalfSize1];
+	//int* iArr2 = new int[iHalfSize2];
 
-	//2등분 하기
-	memcpy(iArr1, _iArr, sizeof(int) * (iHalfSize1));
-	memcpy(iArr2, &_iArr[iHalfSize1], sizeof(int) * (iHalfSize2));
+	////2등분 하기
+	//memcpy(iArr1, _iArr, sizeof(int) * (iHalfSize1));
+	//memcpy(iArr2, &_iArr[iHalfSize1], sizeof(int) * (iHalfSize2));
+	//
+
+	////2등분 한 친구들도 2개씩 비교해서 두개씩 정렬하기
+	//for (int i = 0; i < iHalfSize1; i +=2)
+	//{
+	//	if (iArr1[i] > iArr1[i+1])
+	//	{
+	//		int iTemp = iArr1[i];
+	//		iArr1[i] = iArr1[i + 1];
+	//		iArr1[i + 1] = iTemp;
+	//	}
+	//}
+
+	//for (int i = 0; i < iHalfSize2; i += 2)
+	//{
+	//	if (iArr2[i] > iArr2[i + 1])
+	//	{
+	//		int iTemp = iArr2[i];
+	//		iArr2[i] = iArr2[i + 1];
+	//		iArr2[i + 1] = iTemp;
+	//	}
+	//}
+
+	//int iIndex1, iIndex2, iIndex3 = 0;
+
+	//while (iIndex1 > iHalfSize1 || iIndex2 > iHalfSize2)
+	//{
+	//	if (iArr1[iIndex1] < iArr2[iIndex2])
+	//	{
+	//		iResultArr[iIndex3] = iArr2[iIndex2];
+
+	//		++iIndex2;
+	//		++iIndex3;
+	//	}
+	//	else if (iArr1[iIndex1] > iArr2[iIndex2])
+	//	{
+
+
+	//		iResultArr[iIndex3] = iArr2[iIndex1];
+
+	//		++iIndex1;
+	//		++iIndex3;
+	//	}
+	//}
+
+	////이 두덩이들을 하나씩 비교하면서 배열에 넣자
+#pragma endregion
 	
-
-	//2등분 한 친구들도 2개씩 비교해서 두개씩 정렬하기
-	for (int i = 0; i < iHalfSize1; i +=2)
-	{
-		if (iArr1[i] > iArr1[i+1])
-		{
-			int iTemp = iArr1[i];
-			iArr1[i] = iArr1[i + 1];
-			iArr1[i + 1] = iTemp;
-		}
-	}
-
-	for (int i = 0; i < iHalfSize2; i += 2)
-	{
-		if (iArr2[i] > iArr2[i + 1])
-		{
-			int iTemp = iArr2[i];
-			iArr2[i] = iArr2[i + 1];
-			iArr2[i + 1] = iTemp;
-		}
-	}
-
-	int iIndex1, iIndex2, iIndex3 = 0;
-
-	while (iIndex1 > iHalfSize1 || iIndex2 > iHalfSize2)
-	{
-		if (iArr1[iIndex1] < iArr2[iIndex2])
-		{
-			iResultArr[iIndex3] = iArr2[iIndex2];
-
-			++iIndex2;
-			++iIndex3;
-		}
-		else if (iArr1[iIndex1] > iArr2[iIndex2])
-		{
+#pragma region ReferenceSolution
 
 
-			iResultArr[iIndex3] = iArr2[iIndex1];
-
-			++iIndex1;
-			++iIndex3;
-		}
-	}
-
-	
 
 
-	//이 두덩이들을 하나씩 비교하면서 배열에 넣자
 
+
+
+#pragma endregion
 
 
 
